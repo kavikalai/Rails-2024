@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>NewAlrowad</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= javascript_importmap_tags %>
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "dashboard/bootstrap-icons/bootstrap-icons.css", "data-turbo-track": "reload" %> 
+    <%= stylesheet_link_tag "dashboard", "data-turbo-track": "reload"%>
+    <%= javascript_include_tag "main" %>
+  </head>
+  <body class="">
+    <%= render :partial => 'layouts/header' %>
+    <%= render :partial => 'layouts/left_nav' %>
+    <main id="main" class="main">
+      <%= yield %>
+    </main>
+  </body>
+   <%= render :partial => 'layouts/footer' %>
+   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+</html>
