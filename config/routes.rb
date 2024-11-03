@@ -1,17 +1,17 @@
 Rails.application.routes.draw do
-  
 
+  resources :users, only: [:index, :edit, :show, :update] do
+    member do
+      get :profile
+    end
+  end
 
-  root 'sessions#login'
-
-  resources :users
-
-  get '/login', to: 'sessions#login'
-  post '/login', to: 'sessions#create'
-  post '/logout', to: 'sessions#destroy'
-  get '/logout', to: 'sessions#destroy'
-
-
+  resource :sessions, only: [:create] do 
+    collection do
+      get :logout,  to: 'sessions#destroy'
+      post :logout, to: 'sessions#destroy'
+    end
+  end
   # resources :users
   
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
@@ -22,4 +22,5 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
+  root 'sessions#login'
 end

@@ -1,9 +1,14 @@
 class User < ApplicationRecord
   attr_accessor :password, :old_password, :new_password, :confirm_password
+  
+  has_attached_file :avatar,
+    :styles => { :original=> "125x125#"}
 
   validates :username, :presence => true, :uniqueness => true
-  #validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }, allow_blank: :true, :message: :must_be_a_valid_email_address
+  validates :email, format: { with: URI::MailTo::EMAIL_REGEXP , message: :must_be_a_valid_email_address} 
   validate :password, on: :create
+  validates_attachment :avatar, content_type: { content_type: ["image/jpeg", "image/png", "image/jpg"] }
+  validates_attachment_size :avatar, :less_than => 2.megabytes, :unless => Proc.new {|m| m[:avatar].nil? }
 
   before_save :create_hash_password
 
@@ -24,6 +29,10 @@ class User < ApplicationRecord
     chars = ("0".."9").to_a + ("a".."z").to_a + ("A".."Z").to_a
     len.times { randstr << chars[rand(chars.size - 1)] }
     randstr
+  end
+
+  def profile_img
+    avatar? ? avatar.url : "profile-img.jpg"
   end
 
 end

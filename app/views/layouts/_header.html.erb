@@ -43,7 +43,7 @@
           </li>
           <li><hr class="dropdown-divider"></li>
           <li>
-            <%= link_to user_path(@current_user.id), :class => "dropdown-item d-flex align-items-center" do %>
+            <%= link_to profile_user_path(@current_user.id), :class => "dropdown-item d-flex align-items-center" do %>
               <i class="bi bi-person"></i>
               <span>My Profile</span>
             <% end %>
@@ -57,7 +57,7 @@
           </li>
           <li><hr class="dropdown-divider"></li>
           <li>
-            <%= link_to logout_path, :class => "dropdown-item d-flex align-items-center" do %>
+            <%= link_to logout_sessions_path, :class => "dropdown-item d-flex align-items-center" do %>
               <i class="bi bi-box-arrow-right"></i>
               <span>Sign Out</span>
             <% end %>

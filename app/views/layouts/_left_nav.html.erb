@@ -1,10 +1,10 @@
 <aside id="sidebar" class="sidebar">
   <ul class="sidebar-nav" id="sidebar-nav">
     <li class="nav-item">
-      <a class="nav-link " href="index.html">
+      <%= link_to users_path, class: "nav-link " do %>
         <i class="bi bi-grid"></i>
         <span>Dashboard</span>
-      </a>
+      <% end %>
     </li>
     <% ['Academic','Collaboration', 'Data and Reports', 'Administrtion'].each do |category|%>
       <li class="nav-item">
@@ -44,7 +44,7 @@
     </li>
     <li class="nav-heading">Pages</li>
       <li class="nav-item">
-        <%= link_to user_path(@current_user.id), :class => "nav-link collapsed" do %>
+        <%= link_to profile_user_path(@current_user.id), :class => "nav-link collapsed" do %>
           <i class="bi bi-person"></i>
           <span>Profile</span>
         <% end %>

@@ -1,1 +1,43 @@
-<h1>Tets</h1>
+<%= form_for @current_user, as: :user, url: user_path(@current_user), method: :put, :html => { :multipart => true} do |f| %>
+  <div class="row mb-3">
+    <label for="profileImage" class="col-md-4 col-lg-3 col-form-label">Profile Image</label>
+    <div class="col-md-8 col-lg-9">
+      <%= image_tag @current_user.profile_img, :alt=>"Profile" %>
+      <div class="pt-2">
+        <%= f.file_field :avatar, direct_upload: false, data: { upload_target: "input"} %>
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-3">
+    <label for="fullName" class="col-md-4 col-lg-3 col-form-label">First Name</label>
+    <div class="col-md-8 col-lg-9">
+      <%= f.text_field :first_name, class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="row mb-3">
+    <label for="fullName" class="col-md-4 col-lg-3 col-form-label">Last Name</label>
+    <div class="col-md-8 col-lg-9">
+      <%= f.text_field :last_name, class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="row mb-3">
+    <label for="fullName" class="col-md-4 col-lg-3 col-form-label">Email Id</label>
+    <div class="col-md-8 col-lg-9">
+      <%= f.text_field :email, class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="row mb-3">
+    <label for="fullName" class="col-md-4 col-lg-3 col-form-label">Mobile Number</label>
+    <div class="col-md-8 col-lg-9">
+      <%= f.text_field :mobile_number, class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="text-center">
+    <%= submit_tag "Save Changes", class: "btn btn-primary"%>
+  </div>
+<% end %>

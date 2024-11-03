@@ -13,6 +13,8 @@ class CreateUsers < ActiveRecord::Migration[7.1]
       t.string :google_expired_at
       t.boolean :is_first_login
       t.boolean :is_deleted
+      t.string :role
+      t.string :mobile_number
       t.timestamps
     end
   end
